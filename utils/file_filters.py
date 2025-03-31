@@ -1,6 +1,8 @@
 # 📄 File: utils/file_filters.py
 import openai,json
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
 EXCLUDE_PATHS = [
     # General system/tooling

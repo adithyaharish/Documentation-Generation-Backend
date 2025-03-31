@@ -7,6 +7,7 @@ from flask_cors import CORS
 from docgen_from_github import checkout_branch
 from dotenv import load_dotenv
 load_dotenv()
+import os
 
 app = Flask(__name__)
 CORS(app)
@@ -44,4 +45,4 @@ def generate_docs_for_branch():
     
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(host="0.0.0.0", port=os.getenv("PORT", 5000))
