@@ -42,6 +42,7 @@ This project automatically generates **clean, high-level documentation** from an
 
 ```bash
 pip install -r requirements.txt
+```
 
 **## 🔑 Set Your OpenAI API Key**
 
@@ -49,10 +50,21 @@ Create a `.env` file in the root directory and add your OpenAI API key:
 
 ```env
 OPENAI_API_KEY=your_openai_api_key_here
-
+```
 
 ## ▶️ Start the Flask Server
 
 ```bash
 python app.py
+```
+
+## 📡 API Usage
+
+POST /default-doc 
+
+```bash
+{
+  "repo_url": "https://github.com/username/repo",
+  "branch": "main"
+}
 ```
