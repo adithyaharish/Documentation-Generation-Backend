@@ -16,17 +16,21 @@ CORS(app)
 def generate_docs():
     data = request.get_json()
     repo_url = data.get("repo_url", "").strip()
-
+    branch = data.get("branch", "").strip()
 
     if not repo_url:
         return jsonify({"error": "Missing repo_url"}), 400
 
     try:
-        print(repo_url)
-        result = run_docgen(repo_url)
+        if branch:
+            print(f"📦 Generating docs for branch: {branch}")
+            result = run_docgen_for_existing_repo(branch)
+        else:
+            print(f"📦 Generating docs from URL: {repo_url}")
+            result = run_docgen(repo_url)
         return jsonify(result)
     except Exception as e:
-        return jsonify({"error": str(e)}), 500
+        return jsonify({"error":str(e)}),500
     
 
 @app.route("/branch-doc", methods=["POST"])
