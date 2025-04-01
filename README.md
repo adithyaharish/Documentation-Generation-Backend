@@ -51,4 +51,8 @@ Create a `.env` file in the root directory and add your OpenAI API key:
 OPENAI_API_KEY=your_openai_api_key_here
 
 
-**## ▶️ Start the Flask Server**
+## ▶️ Start the Flask Server
+
+```bash
+python app.py
+```
