@@ -12,7 +12,7 @@ This project automatically generates **clean, high-level documentation** from an
 - 🧠 Uses **Tree-sitter** to parse structure (functions, classes, args)
 - 🗂 Groups files by **import relationships, folder hierarchy, and naming**
 - 🔍 Filters out **non-application/system files** with both logic + GPT
-- 📄 GPT generates:
+- 📄 LLM generates:
   - Full documentation (per file/group)
   - 1-line summary of each file
 - 🌿 Handles **multiple branches**
