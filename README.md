@@ -1,62 +1,44 @@
 **Overview**
 This project is a Documentation Generator that uses AI to create dynamic, interactive documentation from GitHub repositories. It allows users to generate documentation for various programming languages (e.g., Java, Python, JavaScript) and refine it using a conversation with AI. The tool supports multiple user levels (Beginner, Intermediate, Expert) and branch-wise documentation generation.
 
-**Key Features**
-Folder-like Structure Acceptance: The tool can process repositories with nested folder structures and automatically generate documentation for all project files.
+# 🧠 AutoDocGen – Intelligent Code Documentation Generator
 
-1. Multiple Language Support: Supports generating documentation for various languages, such as Java, Python, and JavaScript.
+This project automatically generates **clean, high-level documentation** from any public GitHub repository using Tree-sitter parsing, file grouping, and GPT-based summarization.
 
-2. Branch-wise Documentation: Users can generate documentation for specific branches in a GitHub repository.
+---
 
-3. Persona-based Levels: The system generates documentation based on the user's expertise level (Beginner, Intermediate, or Expert).
+## 🔧 Features
+- ✅ Supports multiple languages: **Python, JavaScript, Java, C++**
+- 🧠 Uses **Tree-sitter** to parse structure (functions, classes, args)
+- 🗂 Groups files by **import relationships, folder hierarchy, and naming**
+- 🔍 Filters out **non-application/system files** with both logic + GPT
+- 📄 GPT generates:
+  - Full documentation (per file/group)
+  - 1-line summary of each file
+- 🌿 Handles **multiple branches**
+- 🔌 Exposed as a **Flask API** for frontend usage
 
-4. AI-based Chat Interface: Users can refine and ask questions about the generated documentation through a chat interface with AI.
+---
 
-**Project Structure**
+## 📁 Code Structure
 
-**Frontend**
+| File / Folder | Description |
+|---------------|-------------|
+| `app.py` | Flask backend server – defines the `/default-doc` endpoint |
+| `run_docgen_cli.py` | Main controller that runs the full doc generation logic |
+| `docgen_from_github.py` | Clones repo, detects branches and language |
+| `parse_all.py` | Parses all files using Tree-sitter and per-language logic |
+| `group_chunks.py` | Groups files into chunks using imports + structure |
+| `build_dependency_graph.py` | Builds a dependency graph of file imports |
+| `summarizers/` | Summarizes code: GPT + heuristic logic |
+| `utils/` | File filters, tree-sitter loader, helpers |
+| `build/my-languages.so` | Precompiled Tree-sitter shared lib (needed for parsing) |
 
-src/App.js: Main React component that manages the user interface and handles user interactions for generating documentation and refining it through the chat.
-src/components/DocumentationPanel.js: Displays the generated documentation in a clean and user-friendly format.
-src/components/ChatInterface.js: Handles the AI chat interface where users can refine and ask questions about the generated documentation.
+---
 
-**Backend (Flask)**
+## 🚀 How to Run
 
-app.py: The Flask backend that handles API requests. It generates documentation by interacting with OpenAI’s API and processes user messages for refining documentation.
-code_dox.py: Contains logic for extracting project structure and generating summaries for each file in the repository.
+### 1. 🔧 Install Dependencies
 
-**Running the Project**
-
-Prerequisites
--> Python 3.x
--> Node.js (for React frontend)
--> OpenAI API Key (for generating documentation via GPT)
-
-**Backend Setup:**
-
-Install Python dependencies:
-
+```bash
 pip install -r requirements.txt
-Run the Flask server:
-python app.py
-
-**Frontend Setup:**
-
-
-Install Node.js dependencies:
-npm install
-Start the React development server:
-npm start
-
-**Accessing the App:**
-
-Visit http://localhost:3000 in your browser to interact with the documentation generator and AI chat.
-
-**Libraries and Frameworks Used**
-
-Frontend: React, React Router
-
-Backend: Flask, OpenAI API, Requests
-
-
-This prototype demonstrates an innovative approach to documentation generation, utilizing AI to not only generate summaries but also enhance them interactively with human-AI conversation. It provides a dynamic, flexible, and user-friendly experience for developers working with diverse codebases.
