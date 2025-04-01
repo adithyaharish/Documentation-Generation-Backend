@@ -1,5 +1,6 @@
 flask
 flask-cors
-dotenv
-tree-sitter==0.2.2
+python-dotenv
+tree-sitter
 GitPython
+openai
