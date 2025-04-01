@@ -1,1 +1,2 @@
-web: python app.py
+python build_parser.py && python app.py
+
